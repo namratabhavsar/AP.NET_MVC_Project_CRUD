@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 
 namespace WebApp2.Models
 {
@@ -6,13 +7,16 @@ namespace WebApp2.Models
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name Can not be empty")]
         public string Name { get; set; }
 
         [Required]
+        [StringLength(100)]
+
         public string Email { get; set; }
 
         [Required]
+        [Range(0,10,ErrorMessage = "Please Enter correct phone number")]
         public string Phone { get; set; }
 
         [Required]

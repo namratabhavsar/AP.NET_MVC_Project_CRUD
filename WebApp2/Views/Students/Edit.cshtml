@@ -1,0 +1,49 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Student
+<h4>Edit Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if(Model is not null)
+        {
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label asp-for="Id" class="control-label"></label>
+                    <input asp-for="Id" class="form-control" readonly />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label"></label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Subscribed" /> @Html.DisplayNameFor(model => model.Subscribed)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+        else
+        {
+            <P class="text-danger">No student found with this Id</P>
+        }
+    </div>
+</div>
